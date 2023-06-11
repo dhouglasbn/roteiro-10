@@ -60,6 +60,9 @@ public class AVLTreeImpl<T extends Comparable<T>> extends BSTImpl<T> implements
 				Util.rightRotation((BSTNode<T>) node.getRight());
 				Util.leftRotation(node);
 			}
+			if (!this.root.getParent().isEmpty()) {
+				this.root = (BSTNode<T>) this.root.getParent();
+			}
 		}
 	}
 	
@@ -92,7 +95,7 @@ public class AVLTreeImpl<T extends Comparable<T>> extends BSTImpl<T> implements
 	private void recursiveRemove(BSTNode<T> node) {
 		if (!node.isEmpty()) {
 			if (node.isLeaf()) { // leaf
-				node = new BSTNode<T>();
+				node.setData(null);
 				this.rebalanceUp(node);
 			} else if (
 					(!node.getLeft().isEmpty() && node.getRight().isEmpty()) ||
