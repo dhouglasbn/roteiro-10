@@ -33,15 +33,17 @@ public class AVLTreeVerifierImpl<T extends Comparable<T>> extends BSTVerifierImp
 
 	private boolean isAVLTree(BSTNode<T> node) {
 		boolean result = true;
-		int balance = this.avlTree.calculateBalance(node);
-		if (Math.abs(balance) > 1) {
-			result = false;
-		} else {
-			if (!node.getLeft().isEmpty()) {
-				isAVLTree((BSTNode<T>) node.getLeft());
-			}
-			if (!node.getRight().isEmpty()) {
-				isAVLTree((BSTNode<T>) node.getRight());
+		if (!node.isEmpty()) {
+			int balance = this.avlTree.calculateBalance(node);
+			if (Math.abs(balance) > 1) {
+				result = false;
+			} else {
+				if (!node.getLeft().isEmpty()) {
+					isAVLTree((BSTNode<T>) node.getLeft());
+				}
+				if (!node.getRight().isEmpty()) {
+					isAVLTree((BSTNode<T>) node.getRight());
+				}
 			}
 		}
 		return result;

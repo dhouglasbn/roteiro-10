@@ -8,6 +8,8 @@ import org.junit.Before;
 import adt.bst.BST;
 import adt.bst.BSTImpl;
 import adt.bst.BSTNode;
+import adt.bst.BSTVerifier;
+import adt.bst.BSTVerifierImpl;
 
 public class StudentAVLTest {
 
@@ -153,5 +155,269 @@ public class StudentAVLTest {
 		assertArrayEquals(new Integer[] { 55, 9, 7, 10, 60, 65 }, avl.preOrder());
 		assertEquals(new Integer(55), avl.getRoot().getData());
 		assertFalse(avl.isEmpty());
+	}
+	
+	@Test
+	public void testIsBST() {
+		BST<Integer> bst = new BSTImpl<Integer>();
+		bst.insert(5);
+		bst.insert(2);
+		bst.insert(8);
+		bst.insert(3);
+		bst.insert(7);
+		bst.insert(1);
+		bst.insert(9);
+		
+		BSTVerifier<Integer> bstVerifier = new BSTVerifierImpl<Integer>(bst);
+		
+		assertTrue(bstVerifier.isBST());
+	}
+	
+	@Test
+	public void testIsEmptyBST() {
+		BST<Integer> bst = new BSTImpl<Integer>();
+		
+		BSTVerifier<Integer> bstVerifier = new BSTVerifierImpl<Integer>(bst);
+		
+		assertTrue(bstVerifier.isBST());
+	}
+	
+	@Test
+	public void testIsNotBSTWithNullElement() {
+		BST<Integer> bst = new BSTImpl<Integer>();
+		bst.insert(5);
+		bst.insert(2);
+		bst.insert(8);
+		bst.insert(3);
+		bst.insert(7);
+		bst.insert(1);
+		bst.insert(9);
+		
+		BSTNode<Integer> node = (BSTNode<Integer>) bst.search(8);
+		
+		node.setData(null);
+		
+		BSTVerifier<Integer> bstVerifier = new BSTVerifierImpl<Integer>(bst);
+		
+		assertFalse(bstVerifier.isBST());
+	}
+
+	@Test
+	public void testIsNotBSTWithHigher() {
+		BST<Integer> bst = new BSTImpl<Integer>();
+		bst.insert(5);
+		bst.insert(2);
+		bst.insert(8);
+		bst.insert(3);
+		bst.insert(7);
+		bst.insert(1);
+		bst.insert(9);
+		
+		BSTNode<Integer> node = (BSTNode<Integer>) bst.search(9);
+		
+		node.setData(-2);
+		
+		BSTVerifier<Integer> bstVerifier = new BSTVerifierImpl<Integer>(bst);
+		
+		assertFalse(bstVerifier.isBST());
+	}
+	
+	@Test
+	public void testIsNotBSTWithLower() {
+		BST<Integer> bst = new BSTImpl<Integer>();
+		bst.insert(5);
+		bst.insert(2);
+		bst.insert(8);
+		bst.insert(3);
+		bst.insert(7);
+		bst.insert(1);
+		bst.insert(9);
+		
+		BSTNode<Integer> node = (BSTNode<Integer>) bst.search(2);
+		
+		node.setData(11);
+		
+		BSTVerifier<Integer> bstVerifier = new BSTVerifierImpl<Integer>(bst);
+		
+		assertFalse(bstVerifier.isBST());
+	}
+	
+	@Test
+	public void testIsCompletedBalancedAVLTree() {
+		AVLTree<Integer> avlTree = new AVLTreeImpl<Integer>();
+		avlTree.insert(5);
+		avlTree.insert(2);
+		avlTree.insert(8);
+		avlTree.insert(3);
+		avlTree.insert(7);
+		avlTree.insert(1);
+		avlTree.insert(9);
+		
+		AVLTreeVerifier<Integer> avlVerifier = new AVLTreeVerifierImpl<Integer>(avlTree);
+		
+		assertTrue(avlVerifier.isAVLTree());
+	}
+	
+	@Test
+	public void testIsAlmostCompletedBalancedAVLTree() {
+		AVLTree<Integer> avlTree = new AVLTreeImpl<Integer>();
+		avlTree.insert(5);
+		avlTree.insert(2);
+		avlTree.insert(8);
+		avlTree.insert(7);
+		avlTree.insert(1); 
+		
+		AVLTreeVerifier<Integer> avlVerifier = new AVLTreeVerifierImpl<Integer>(avlTree);
+		
+		assertTrue(avlVerifier.isAVLTree());
+	}
+	
+	@Test
+	public void testIsEmptyAVLTree() {
+		AVLTree<Integer> avlTree = new AVLTreeImpl<Integer>();
+		
+		AVLTreeVerifier<Integer> avlVerifier = new AVLTreeVerifierImpl<Integer>(avlTree);
+		
+		assertTrue(avlVerifier.isAVLTree());
+	}
+	
+	@Test
+	public void testIsNotAVLTreeWithNullElement() {
+		AVLTree<Integer> avlTree = new AVLTreeImpl<Integer>();
+		avlTree.insert(5);
+		avlTree.insert(2);
+		avlTree.insert(8);
+		avlTree.insert(3);
+		avlTree.insert(7);
+		avlTree.insert(1);
+		avlTree.insert(9);
+		
+		BSTNode<Integer> node = (BSTNode<Integer>) avlTree.search(8);
+		
+		node.setData(null);
+		
+		AVLTreeVerifier<Integer> avlVerifier = new AVLTreeVerifierImpl<Integer>(avlTree);
+		
+		assertFalse(avlVerifier.isAVLTree());
+	}
+
+	@Test
+	public void testIsNotAVLTreeWithHigher() {
+		AVLTree<Integer> avlTree = new AVLTreeImpl<Integer>();
+		avlTree.insert(5);
+		avlTree.insert(2);
+		avlTree.insert(8);
+		avlTree.insert(3);
+		avlTree.insert(7);
+		avlTree.insert(1);
+		avlTree.insert(9);
+		
+		BSTNode<Integer> node = (BSTNode<Integer>) avlTree.search(9);
+		
+		node.setData(-2);
+		
+		AVLTreeVerifier<Integer> avlVerifier = new AVLTreeVerifierImpl<Integer>(avlTree);
+		
+		assertFalse(avlVerifier.isAVLTree());
+	}
+	
+	@Test
+	public void testIsNotAVLTreeWithLower() {
+		AVLTree<Integer> avlTree = new AVLTreeImpl<Integer>();
+		avlTree.insert(5);
+		avlTree.insert(2);
+		avlTree.insert(8);
+		avlTree.insert(3);
+		avlTree.insert(7);
+		avlTree.insert(1);
+		avlTree.insert(9);
+		
+		BSTNode<Integer> node = (BSTNode<Integer>) avlTree.search(2);
+		
+		node.setData(11);
+		
+		AVLTreeVerifier<Integer> avlVerifier = new AVLTreeVerifierImpl<Integer>(avlTree);
+		
+		assertFalse(avlVerifier.isAVLTree());
+	}
+	
+	@Test
+	public void testIsUnbalancedLeftAVLTree() {
+		AVLTree<Integer> avlTree = new AVLTreeImpl<Integer>();
+		avlTree.insert(5);
+		avlTree.insert(2);
+		
+		BSTNode<Integer> node = (BSTNode<Integer>) avlTree.search(2);
+		BSTNode<Integer> newNode = new BSTNode<Integer>();
+		newNode.setData(1);
+		newNode.setParent(node);
+		newNode.setLeft(new BSTNode<Integer>());
+		newNode.setRight(new BSTNode<Integer>());
+		
+		node.setLeft(newNode);
+		
+		AVLTreeVerifier<Integer> avlVerifier = new AVLTreeVerifierImpl<Integer>(avlTree);
+		
+		assertFalse(avlVerifier.isAVLTree());
+	}
+	
+	@Test
+	public void testIsUnbalancedRightAVLTree() {
+		AVLTree<Integer> avlTree = new AVLTreeImpl<Integer>();
+		avlTree.insert(5);
+		avlTree.insert(8);
+		
+		BSTNode<Integer> node = (BSTNode<Integer>) avlTree.search(8);
+		BSTNode<Integer> newNode = new BSTNode<Integer>();
+		newNode.setData(10);
+		newNode.setParent(node);
+		newNode.setLeft(new BSTNode<Integer>());
+		newNode.setRight(new BSTNode<Integer>());
+		
+		node.setRight(newNode);
+		
+		AVLTreeVerifier<Integer> avlVerifier = new AVLTreeVerifierImpl<Integer>(avlTree);
+		
+		assertFalse(avlVerifier.isAVLTree());
+	}
+	
+	@Test
+	public void testIsUnbalancedLeftRightAVLTree() {
+		AVLTree<Integer> avlTree = new AVLTreeImpl<Integer>();
+		avlTree.insert(5);
+		avlTree.insert(2);
+		
+		BSTNode<Integer> node = (BSTNode<Integer>) avlTree.search(2);
+		BSTNode<Integer> newNode = new BSTNode<Integer>();
+		newNode.setData(3);
+		newNode.setParent(node);
+		newNode.setLeft(new BSTNode<Integer>());
+		newNode.setRight(new BSTNode<Integer>());
+		
+		node.setRight(newNode);
+		
+		AVLTreeVerifier<Integer> avlVerifier = new AVLTreeVerifierImpl<Integer>(avlTree);
+		
+		assertFalse(avlVerifier.isAVLTree());
+	}
+	
+	@Test
+	public void testIsUnbalancedRightLeftAVLTree() {
+		AVLTree<Integer> avlTree = new AVLTreeImpl<Integer>();
+		avlTree.insert(5);
+		avlTree.insert(8);
+		
+		BSTNode<Integer> node = (BSTNode<Integer>) avlTree.search(8);
+		BSTNode<Integer> newNode = new BSTNode<Integer>();
+		newNode.setData(6);
+		newNode.setParent(node);
+		newNode.setLeft(new BSTNode<Integer>());
+		newNode.setRight(new BSTNode<Integer>());
+		
+		node.setLeft(newNode);
+		
+		AVLTreeVerifier<Integer> avlVerifier = new AVLTreeVerifierImpl<Integer>(avlTree);
+		
+		assertFalse(avlVerifier.isAVLTree());
 	}
 }

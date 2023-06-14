@@ -1,0 +1,378 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Cannot create worker GC thread. Out of system resources.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (workerManager.hpp:87), pid=28060, tid=28065
+#
+# JRE version:  (17.0.2+8) (build )
+# Java VM: OpenJDK 64-Bit Server VM (17.0.2+8, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, linux-amd64)
+# Core dump will be written. Default location: Core dumps may be processed with "/lib/systemd/systemd-coredump %P %u %g %s %t 9223372036854775808 %h" (or dumping to /home/dhouglas.nobrega/git/roteiro-10/core.28060)
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -ea -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 39299 -testLoaderClass org.eclipse.jdt.internal.junit5.runner.JUnit5TestLoader -loaderpluginname org.eclipse.jdt.junit5.runtime -packageNameFile /tmp/packageNames12898993267205169651.txt
+
+Host: AMD PRO A10-8770E R7, 10 COMPUTE CORES 4C+6G, 4 cores, 7G, Linux Mint 20.3 Una
+Time: Wed Jun 14 09:38:12 2023 -03 elapsed time: 0.030137 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f844c023e10):  JavaThread "Unknown thread" [_thread_in_vm, id=28065, stack(0x00007f8451611000,0x00007f8451712000)]
+
+Stack: [0x00007f8451611000,0x00007f8451712000],  sp=0x00007f8451710660,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xf81ea1]  VMError::report_and_die(int, char const*, char const*, __va_list_tag*, Thread*, unsigned char*, void*, void*, char const*, int, unsigned long)+0x1a1
+V  [libjvm.so+0xf82b2b]  VMError::report_and_die(Thread*, char const*, int, unsigned long, VMErrorType, char const*, __va_list_tag*)+0x2b
+V  [libjvm.so+0x61d6ad]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*, ...)+0xcd
+V  [libjvm.so+0xfb043e]  WorkerManager::add_workers(WorkGang*, unsigned int, unsigned int, unsigned int, os::ThreadType, bool)+0x14e
+V  [libjvm.so+0xfb0629]  WorkGang::initialize_workers()+0x49
+V  [libjvm.so+0x70eac1]  G1CollectedHeap::initialize()+0x621
+V  [libjvm.so+0xf305a1]  universe_init()+0xd1
+V  [libjvm.so+0x823dd6]  init_globals()+0x36
+V  [libjvm.so+0xf07bed]  Threads::create_vm(JavaVMInitArgs*, bool*)+0x2fd
+V  [libjvm.so+0x8e1472]  JNI_CreateJavaVM+0x52
+C  [libjli.so+0x4b91]  JavaMain+0x91
+C  [libjli.so+0x8889]  ThreadJavaMain+0x9
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007f8452e9b320, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+[error occurred during error reporting (printing all threads), id 0xb, SIGSEGV (0xb) at pc=0x00007f8451f95da1]
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f844c021820] Heap_lock - owner thread: 0x00007f844c023e10
+
+Heap address: 0x000000008c800000, size: 1848 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+<Empty>
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x000000008c800000, 0x0000000100000000)
+  region size 1024K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xb, SIGSEGV (0xb) at pc=0x00007f845256786a]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (2 events):
+Event: 0.005 Protecting memory [0x00007f8451611000,0x00007f8451615000] with protection modes 0
+Event: 0.005 Loaded shared library /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjava.so
+
+
+Dynamic libraries:
+8c800000-100000000 ---p 00000000 00:00 0 
+5637aa53d000-5637aa53e000 r-xp 00000000 08:01 4856205                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/bin/java
+5637aa73e000-5637aa73f000 r--p 00001000 08:01 4856205                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/bin/java
+5637aa73f000-5637aa740000 rw-p 00002000 08:01 4856205                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/bin/java
+5637ac2ea000-5637ac30b000 rw-p 00000000 00:00 0                          [heap]
+7f8435b05000-7f8435ef0000 rw-p 00000000 00:00 0 
+7f8435ef0000-7f8435ef1000 ---p 00000000 00:00 0 
+7f8435ef1000-7f8435ff2000 rw-p 00000000 00:00 0 
+7f8435ff2000-7f84399b2000 ---p 00000000 00:00 0 
+7f84399b2000-7f8439c22000 rwxp 00000000 00:00 0 
+7f8439c22000-7f8439f43000 ---p 00000000 00:00 0 
+7f8439f43000-7f843a1b3000 rwxp 00000000 00:00 0 
+7f843a1b3000-7f844147a000 ---p 00000000 00:00 0 
+7f844147a000-7f84416ea000 rwxp 00000000 00:00 0 
+7f84416ea000-7f84489b2000 ---p 00000000 00:00 0 
+7f84489b2000-7f844bffc000 r--s 00000000 08:01 4856620                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/modules
+7f844c000000-7f844c06d000 rw-p 00000000 00:00 0 
+7f844c06d000-7f8450000000 ---p 00000000 00:00 0 
+7f845006e000-7f84500ac000 rw-p 00000000 00:00 0 
+7f84500ac000-7f8450b80000 ---p 00000000 00:00 0 
+7f8450b80000-7f8450f89000 rw-p 00000000 00:00 0 
+7f8450f89000-7f845106f000 ---p 00000000 00:00 0 
+7f845106f000-7f8451074000 rw-p 00000000 00:00 0 
+7f8451074000-7f845115a000 ---p 00000000 00:00 0 
+7f845115a000-7f845117e000 r-xp 00000000 08:01 4856690                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjava.so
+7f845117e000-7f845137e000 ---p 00024000 08:01 4856690                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjava.so
+7f845137e000-7f845137f000 r--p 00024000 08:01 4856690                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjava.so
+7f845137f000-7f8451380000 rw-p 00025000 08:01 4856690                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjava.so
+7f8451380000-7f8451381000 rw-p 00000000 00:00 0 
+7f8451382000-7f84513ee000 r--s 00000000 08:01 2099427                    /var/cache/nscd/passwd
+7f84513f2000-7f845140d000 r-xp 00000000 08:01 4856679                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjimage.so
+7f845140d000-7f845160c000 ---p 0001b000 08:01 4856679                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjimage.so
+7f845160c000-7f845160e000 r--p 0001a000 08:01 4856679                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjimage.so
+7f845160e000-7f845160f000 rw-p 0001c000 08:01 4856679                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjimage.so
+7f8451611000-7f8451615000 ---p 00000000 00:00 0 
+7f8451615000-7f8451712000 rw-p 00000000 00:00 0 
+7f8451712000-7f845171f000 r--p 00000000 08:01 4992089                    /usr/lib/x86_64-linux-gnu/libm-2.31.so
+7f845171f000-7f84517c6000 r-xp 0000d000 08:01 4992089                    /usr/lib/x86_64-linux-gnu/libm-2.31.so
+7f84517c6000-7f845185f000 r--p 000b4000 08:01 4992089                    /usr/lib/x86_64-linux-gnu/libm-2.31.so
+7f845185f000-7f8451860000 r--p 0014c000 08:01 4992089                    /usr/lib/x86_64-linux-gnu/libm-2.31.so
+7f8451860000-7f8451861000 rw-p 0014d000 08:01 4992089                    /usr/lib/x86_64-linux-gnu/libm-2.31.so
+7f8451872000-7f845187a000 rw-s 00000000 08:05 392457                     /tmp/hsperfdata_dhouglas.nobrega/28060
+7f845187a000-7f8452b5e000 r-xp 00000000 08:01 4856570                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/server/libjvm.so
+7f8452b5e000-7f8452d5e000 ---p 012e4000 08:01 4856570                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/server/libjvm.so
+7f8452d5e000-7f8452e17000 r--p 012e4000 08:01 4856570                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/server/libjvm.so
+7f8452e17000-7f8452e4c000 rw-p 0139d000 08:01 4856570                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/server/libjvm.so
+7f8452e4c000-7f8452ea5000 rw-p 00000000 00:00 0 
+7f8452eaa000-7f8452ecc000 r--p 00000000 08:01 4992087                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
+7f8452ecc000-7f8453044000 r-xp 00022000 08:01 4992087                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
+7f8453044000-7f8453092000 r--p 0019a000 08:01 4992087                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
+7f8453092000-7f8453096000 r--p 001e7000 08:01 4992087                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
+7f8453096000-7f8453098000 rw-p 001eb000 08:01 4992087                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
+7f8453098000-7f845309c000 rw-p 00000000 00:00 0 
+7f84530a2000-7f84530a3000 r--p 00000000 08:01 4992088                    /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+7f84530a3000-7f84530a5000 r-xp 00001000 08:01 4992088                    /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+7f84530a5000-7f84530a6000 r--p 00003000 08:01 4992088                    /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+7f84530a6000-7f84530a7000 r--p 00003000 08:01 4992088                    /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+7f84530a7000-7f84530a8000 rw-p 00004000 08:01 4992088                    /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+7f84530aa000-7f84530b0000 r--p 00000000 08:01 4992100                    /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+7f84530b0000-7f84530c1000 r-xp 00006000 08:01 4992100                    /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+7f84530c1000-7f84530c7000 r--p 00017000 08:01 4992100                    /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+7f84530c7000-7f84530c8000 r--p 0001c000 08:01 4992100                    /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+7f84530c8000-7f84530c9000 rw-p 0001d000 08:01 4992100                    /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+7f84530c9000-7f84530cd000 rw-p 00000000 00:00 0 
+7f84530d2000-7f84530e1000 r-xp 00000000 08:01 4856686                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjli.so
+7f84530e1000-7f84532e1000 ---p 0000f000 08:01 4856686                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjli.so
+7f84532e1000-7f84532e2000 r--p 0000f000 08:01 4856686                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjli.so
+7f84532e2000-7f84532e3000 rw-p 00010000 08:01 4856686                    /opt/eclipse2022-3/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.2.v20220201-1208/jre/lib/libjli.so
+7f84532ea000-7f84532ec000 r--p 00000000 08:01 4981442                    /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+7f84532ec000-7f84532fd000 r-xp 00002000 08:01 4981442                    /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+7f84532fd000-7f8453303000 r--p 00013000 08:01 4981442                    /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+7f8453303000-7f8453304000 ---p 00019000 08:01 4981442                    /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+7f8453304000-7f8453305000 r--p 00019000 08:01 4981442                    /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+7f8453305000-7f8453306000 rw-p 0001a000 08:01 4981442                    /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+7f8453306000-7f845330b000 rw-p 00000000 00:00 0 
+7f845330b000-7f8453312000 ---p 00000000 00:00 0 
+7f8453312000-7f8453314000 r--p 00000000 08:01 4992102                    /usr/lib/x86_64-linux-gnu/librt-2.31.so
+7f8453314000-7f8453318000 r-xp 00002000 08:01 4992102                    /usr/lib/x86_64-linux-gnu/librt-2.31.so
+7f8453318000-7f845331a000 r--p 00006000 08:01 4992102                    /usr/lib/x86_64-linux-gnu/librt-2.31.so
+7f845331a000-7f845331b000 r--p 00007000 08:01 4992102                    /usr/lib/x86_64-linux-gnu/librt-2.31.so
+7f845331b000-7f845331c000 rw-p 00008000 08:01 4992102                    /usr/lib/x86_64-linux-gnu/librt-2.31.so
+7f8453320000-7f8453321000 ---p 00000000 00:00 0 
+7f8453321000-7f8453322000 r--p 00000000 00:00 0 
+7f8453322000-7f8453323000 r--p 00000000 08:01 4992083                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
+7f8453323000-7f8453346000 r-xp 00001000 08:01 4992083                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
+7f8453346000-7f845334e000 r--p 00024000 08:01 4992083                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
+7f845334e000-7f845334f000 ---p 00000000 00:00 0 
+7f845334f000-7f8453350000 r--p 0002c000 08:01 4992083                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
+7f8453350000-7f8453351000 rw-p 0002d000 08:01 4992083                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
+7f8453351000-7f8453354000 rw-p 00000000 00:00 0 
+7f8453354000-7f8453356000 rw-p 00000000 00:00 0 
+7ffc5613f000-7ffc56161000 rw-p 00000000 00:00 0                          [stack]
+7ffc5617a000-7ffc5617d000 r--p 00000000 00:00 0                          [vvar]
+7ffc5617d000-7ffc5617e000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+
+
+VM Arguments:
+jvm_args: -ea -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages 
+java_command: org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 39299 -testLoaderClass org.eclipse.jdt.internal.junit5.runner.JUnit5TestLoader -loaderpluginname org.eclipse.jdt.junit5.runtime -packageNameFile /tmp/packageNames12898993267205169651.txt
+java_class_path (initial): /home/dhouglas.nobrega/git/roteiro-10/target/test-classes:/home/dhouglas.nobrega/git/roteiro-10/target/classes:/opt/eclipse2022-3/plugins/org.junit.jupiter.api_5.8.1.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.junit.jupiter.engine_5.8.1.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.junit.jupiter.migrationsupport_5.8.1.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.junit.jupiter.params_5.8.1.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.junit.platform.commons_1.8.1.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.junit.platform.engine_1.8.1.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.junit.platform.launcher_1.8.1.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.junit.platform.runner_1.8.1.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.junit.platform.suite.api_1.8.1.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.junit.platform.suite.engine_1.8.1.v20211028-1957.jar:/opt/eclipse2022-3/plugins/org.junit.platform.suite.commons_1.8.1.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.junit.vintage.engine_5.8.1.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.opentest4j_1.2.0.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.apiguardian_1.1.2.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.junit_4.13.2.v20211018-1956.jar:/opt/eclipse2022-3/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar:/home/dhouglas.nobrega/.m2/repository/junit/junit/4.13.1/junit-4.13.1.jar:/home/dhouglas.nobrega/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/dhouglas.nobrega/.eclipse/org.eclipse.platform_4.23.0_1000365696_linux_gtk_x86_64/configuration/org.eclipse.osgi/413/0/.cp:/home/dhouglas.nobrega/.eclipse/org.eclipse.platform_4.23.0_1000365696_linux_gtk_x86_64/configuration/org.eclipse.osgi/411/0/.cp
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 3                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 4                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 121634816                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 1937768448                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5832780                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122912730                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122912730                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool ShowCodeDetailsInExceptionMessages       = true                                   {manageable} {command line}
+   size_t SoftMaxHeapSize                          = 1937768448                             {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/puppetlabs/bin:/home/dhouglas.nobrega/.local/bin:/home/dhouglas.nobrega/bin:/usr/local/go/bin
+SHELL=/bin/bash
+DISPLAY=:0
+LANG=pt_BR.UTF-8
+
+Signal Handlers:
+   SIGSEGV: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO
+    SIGBUS: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO
+    SIGFPE: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO
+   SIGPIPE: javaSignalHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO
+   SIGXFSZ: javaSignalHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO
+    SIGILL: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO
+   SIGUSR2: SR_handler in libjvm.so, mask=00100000000000000000000000000000, flags=SA_RESTART|SA_SIGINFO
+    SIGHUP: SIG_DFL, mask=00000000000000000000000000000000, flags=none
+    SIGINT: SIG_DFL, mask=00000000000000000000000000000000, flags=none
+   SIGTERM: SIG_DFL, mask=00000000000000000000000000000000, flags=none
+   SIGQUIT: SIG_DFL, mask=00000000000000000000000000000000, flags=none
+   SIGTRAP: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+DISTRIB_ID=LinuxMint
+DISTRIB_RELEASE=20.3
+DISTRIB_CODENAME=una
+DISTRIB_DESCRIPTION="Linux Mint 20.3 Una"
+uname: Linux 5.4.0-149-generic #166-Ubuntu SMP Tue Apr 18 16:51:45 UTC 2023 x86_64
+OS uptime: 0 days 2:37 hours
+libc: glibc 2.31 NPTL 2.31 
+rlimit (soft/hard): STACK 8192k/infinity , CORE 0k/infinity , NPROC 800/800 , NOFILE 1048576/1048576 , AS infinity/infinity , CPU infinity/infinity , DATA infinity/infinity , FSIZE infinity/infinity , MEMLOCK 65536k/65536k
+load average: 0.39 0.69 0.93
+
+/proc/meminfo:
+MemTotal:        7561408 kB
+MemFree:         1345016 kB
+MemAvailable:    3943888 kB
+Buffers:          274112 kB
+Cached:          2361780 kB
+SwapCached:            0 kB
+Active:          4204612 kB
+Inactive:        1329812 kB
+Active(anon):    2953824 kB
+Inactive(anon):    56592 kB
+Active(file):    1250788 kB
+Inactive(file):  1273220 kB
+Unevictable:         112 kB
+Mlocked:             112 kB
+SwapTotal:       7810044 kB
+SwapFree:        7810044 kB
+Dirty:                56 kB
+Writeback:             0 kB
+AnonPages:       2898864 kB
+Mapped:           517620 kB
+Shmem:            111840 kB
+KReclaimable:     377140 kB
+Slab:             496760 kB
+SReclaimable:     377140 kB
+SUnreclaim:       119620 kB
+KernelStack:       15808 kB
+PageTables:        29468 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    11590748 kB
+Committed_AS:    6960120 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:       32604 kB
+VmallocChunk:          0 kB
+Percpu:             3168 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      410432 kB
+DirectMap2M:     7383040 kB
+DirectMap1G:     1048576 kB
+
+/sys/kernel/mm/transparent_hugepage/enabled: always [madvise] never
+/sys/kernel/mm/transparent_hugepage/defrag (defrag/compaction efforts parameter): always defer defer+madvise [madvise] never
+
+Process Memory:
+Virtual Size: 2375632K (peak: 2375632K)
+Resident Set Size: 18052K (peak: 18052K) (anon: 5628K, file: 12424K, shmem: 0K)
+Swapped out: 0K
+C-Heap outstanding allocations: 530K
+
+/proc/sys/kernel/threads-max (system-wide limit on the number of threads): 58324
+/proc/sys/vm/max_map_count (maximum number of memory map areas a process may have): 65530
+/proc/sys/kernel/pid_max (system-wide limit on number of process identifiers): 4194304
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0-3
+cpu_memory_nodes: 0
+active_processor_count: 4
+cpu_quota: no quota
+cpu_period: 100000
+cpu_shares: no shares
+memory_limit_in_bytes: unlimited
+memory_and_swap_limit_in_bytes: not supported
+memory_soft_limit_in_bytes: unlimited
+memory_usage_in_bytes: 3574501376
+memory_max_usage_in_bytes: 3857379328
+
+Steal ticks since vm start: 0
+Steal ticks percentage since vm start:  0.000
+
+CPU: total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 21 model 101 stepping 1 microcode 0x600611a, cx8, cmov, fxsr, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4a, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, clmul, bmi1, bmi2, fma, vzeroupper, clflush
+CPU Model and flags from /proc/cpuinfo:
+model name	: AMD PRO A10-8770E R7, 10 COMPUTE CORES 4C+6G
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good acc_power nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 tce nodeid_msr tbm topoext perfctr_core perfctr_nb bpext ptsc mwaitx cpb hw_pstate ssbd ibpb vmmcall fsgsbase bmi1 avx2 smep bmi2 xsaveopt arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic vgif overflow_recov
+
+Online cpus: 0-3
+Offline cpus: 
+BIOS frequency limitation: 2800000
+Frequency switch latency (ns): 4000
+Available cpu frequencies: 2800000 2600000 2100000 1300000 800000 
+Current governor: ondemand
+Core performance/turbo boost: 1
+
+Memory: 4k page, physical 7561408k(1345016k free), swap 7810044k(7810044k free)
+Page Sizes: 4k
+
+vm_info: OpenJDK 64-Bit Server VM (17.0.2+8) for linux-amd64 JRE (17.0.2+8), built on Jan 20 2022 09:56:58 by "" with gcc 7.5.0
+
+END.
